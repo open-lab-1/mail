@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f4eb">
+  <meta name="description" content="Messagerie privée de L'Atelier de Noël 3D.">
+  <title>Messagerie — L'Atelier de Noël 3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="L'Atelier de Noël 3D">
+        <span class="brand-mark">A<span>✳</span></span>
+        <span class="brand-copy"><strong>L'Atelier de Noël 3D</strong><small>MESSAGERIE PRIVÉE</small></span>
+      </a>
+      <div class="top-note"><span class="status-dot"></span> Espace administrateur</div>
+    </header>
+
+    <section id="login-panel" class="login-layout">
+      <div class="intro">
+        <p class="eyebrow">L'ATELIER · SAINT-WITZ</p>
+        <h1>Les bons mots,<br><em>au bon moment.</em></h1>
+        <p class="intro-text">Un espace simple pour préparer, relire et envoyer les messages de l'Atelier depuis son adresse habituelle.</p>
+        <div class="intro-rule"></div>
+        <p class="intro-foot">MESSAGERIE • CONFIDENTIELLE • ADMINISTRATION</p>
+      </div>
+      <form id="login-form" class="panel login-card">
+        <div class="panel-icon">✉</div>
+        <p class="eyebrow">ACCÈS RÉSERVÉ</p>
+        <h2>Connexion</h2>
+        <p class="muted">Connecte-toi avec ton compte administrateur de l'Atelier.</p>
+        <label for="login-email">Adresse e-mail</label>
+        <input id="login-email" type="email" autocomplete="username" placeholder="ton adresse e-mail" required>
+        <label for="login-password">Mot de passe</label>
+        <input id="login-password" type="password" autocomplete="current-password" placeholder="Mot de passe" required>
+        <button class="button button-primary full" type="submit"><span>Ouvrir la messagerie</span><b>↗</b></button>
+        <p id="login-error" class="feedback error" role="alert"></p>
+        <p class="secure-note"><span>●</span> Connexion sécurisée par Supabase Auth</p>
+      </form>
+    </section>
+
+    <section id="mail-app" class="app-layout" hidden>
+      <div class="app-heading">
+        <div><p class="eyebrow">VOTRE ESPACE DE COMMUNICATION</p><h1>Nouvel <em>e-mail</em></h1><p class="muted">Rédige ton message, vérifie l'aperçu, puis confirme l'envoi.</p></div>
+        <button id="logout-button" class="button button-light" type="button">Déconnexion <span>↗</span></button>
+      </div>
+      <div class="workspace">
+        <form id="compose-form" class="panel compose-card">
+          <div class="section-heading"><span class="step">01</span><div><h2>Rédaction</h2><p>Prépare ton message</p></div></div>
+          <label for="recipient">Destinataire</label>
+          <input id="recipient" type="email" maxlength="254" placeholder="client@exemple.fr" required>
+          <label for="subject">Objet de l'e-mail</label>
+          <input id="subject" type="text" maxlength="180" placeholder="Ex. : Votre demande à l'Atelier" required>
+          <div class="label-row"><label for="message">Message</label><span id="char-count">0 / 15 000</span></div>
+          <textarea id="message" rows="12" maxlength="15000" placeholder="Bonjour,
+
+Écris ton message ici…" required></textarea>
+          <label class="checkline"><input id="signature" type="checkbox" checked><span>Ajouter la signature de l'Atelier</span></label>
+          <div class="form-actions">
+            <button id="clear-button" class="button button-light" type="button">Effacer</button>
+            <button id="send-button" class="button button-primary" type="submit"><span>Envoyer l'e-mail</span><b>➜</b></button>
+          </div>
+          <p id="send-feedback" class="feedback" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="preview-column">
+          <div class="section-heading preview-title"><span class="step">02</span><div><h2>Aperçu</h2><p>Voici comment le message sera présenté</p></div></div>
+          <div class="preview-window">
+            <div class="preview-top"><span></span><span></span><span></span><small>APERÇU DU MESSAGE</small></div>
+            <div class="mail-preview">
+              <div class="preview-brand"><span class="brand-mark small-mark">A<span>✳</span></span><div><strong>L'Atelier de Noël 3D</strong><small>SAINT-WITZ & ALENTOURS</small></div></div>
+              <div class="preview-divider"></div>
+              <p class="preview-label">À</p><p id="preview-to" class="preview-value">destinataire@exemple.fr</p>
+              <p class="preview-label">OBJET</p><h3 id="preview-subject">Objet de votre e-mail</h3>
+              <div class="preview-divider"></div>
+              <p id="preview-message" class="preview-message">Ton message apparaîtra ici…</p>
+              <div id="preview-signature" class="preview-signature">—<br><strong>L'Atelier de Noël 3D</strong><br>Saint-Witz et alentours</div>
+            </div>
+          </div>
+          <div class="tip-card"><span>✦</span><p><strong>Un dernier regard.</strong><br>Vérifie l'adresse et le contenu avant chaque envoi. Aucun message ne part sans ton clic de confirmation.</p></div>
+        </aside>
+      </div>
+      <footer class="app-footer"><span>L'ATELIER DE NOËL 3D</span><span>MESSAGERIE ADMINISTRATEUR</span></footer>
+    </section>
+    <footer id="login-footer" class="login-footer">© L'Atelier de Noël 3D · Messagerie privée</footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
